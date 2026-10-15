@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GraphLab — Graph Algorithm Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brandmark">G</span> graph<span>lab</span></a>
+  <nav><a href="#visualizer">Visualizer</a><a href="#learn">Algorithms</a><a href="#about">About</a></nav>
+  <span class="status"><i></i> Interactive learning</span>
+</header>
+<main>
+  <section class="hero">
+    <div class="eyebrow"><span>ADA · ALGORITHM ANALYSIS &amp; DESIGN</span><span class="pill">LEARN BY EXPLORING</span></div>
+    <h1>See algorithms<br><em>come to life.</em></h1>
+    <p class="hero-copy">Explore graph traversal and shortest-path algorithms one step at a time. Build intuition, not just answers.</p>
+    <div class="hero-actions"><a class="primary" href="#visualizer">Open visualizer ↘</a><span class="micro">No coding required · Free to explore</span></div>
+    <div class="hero-art" aria-hidden="true"><span class="line l1"></span><span class="line l2"></span><span class="line l3"></span><span class="line l4"></span><b class="art-node n1">A</b><b class="art-node n2">B</b><b class="art-node n3">C</b><b class="art-node n4">D</b><b class="art-node n5">E</b><b class="art-node n6">F</b></div>
+  </section>
+  <section class="workspace" id="visualizer">
+    <div class="section-head"><div><span class="kicker">01 / PLAYGROUND</span><h2>Graph visualizer</h2><p>Choose an algorithm, then step through the graph.</p></div><span class="live-tag">● LIVE CANVAS</span></div>
+    <div class="work-grid">
+      <aside class="panel controls">
+        <div class="panel-title">CONFIGURATION</div>
+        <label for="algorithm">Algorithm</label>
+        <select id="algorithm"><option value="bfs">Breadth-First Search (BFS)</option><option value="dfs">Depth-First Search (DFS)</option><option value="dijkstra">Dijkstra's Shortest Path</option></select>
+        <div class="field-row"><div><label for="start">Start node</label><select id="start"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div><div><label for="end">Target node</label><select id="end"><option>F</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div></div>
+        <label>Sample graph</label><div class="sample-row"><button class="sample active" data-graph="classic">Classic</button><button class="sample" data-graph="weighted">Weighted</button><button class="sample" data-graph="sparse">Sparse</button></div>
+        <div class="control-buttons"><button id="run" class="btn-main">▶ Run algorithm</button><button id="step" class="btn-secondary">Next step →</button><button id="reset" class="btn-quiet">↺ Reset graph</button></div>
+        <div class="legend"><span>● Unvisited</span><span class="orange">● Current</span><span class="green">● Visited</span></div>
+      </aside>
+      <div class="panel canvas-panel">
+        <div class="canvas-top"><div><span class="canvas-title">NETWORK CANVAS</span><span class="canvas-sub">Undirected graph · <b id="node-count">6 nodes</b></span></div><span id="canvas-badge" class="canvas-badge">● READY</span></div>
+        <div class="graph-wrap"><svg id="graph" viewBox="0 0 640 390" role="img" aria-label="Interactive graph visualization"></svg></div>
+        <div class="canvas-bottom"><span id="step-label">Ready to explore</span><span class="key-hint">Click a node to set start</span></div>
+      </div>
+      <aside class="panel output-panel">
+        <div class="panel-title">ALGORITHM TRACE <span id="trace-count">00 STEPS</span></div>
+        <div class="metric-grid"><div class="metric"><span>Visited</span><strong id="visited-count">0</strong></div><div class="metric"><span>Steps</span><strong id="steps-count">0</strong></div></div>
+        <div class="trace-heading">VISIT ORDER</div><div id="visit-order" class="visit-order"><span class="empty">Your traversal will appear here.</span></div>
+        <div class="trace-heading">CURRENT ACTION</div><div id="action" class="action-box"><div><b>Ready when you are</b><p>Run the algorithm or move one step at a time.</p></div></div>
+        <div class="trace-heading">PRIORITY / QUEUE</div><div id="frontier" class="frontier"><span class="empty">Waiting for a run…</span></div>
+      </aside>
+    </div>
+  </section>
+  <section class="learn" id="learn">
+    <div class="section-head"><div><span class="kicker">02 / THE TOOLKIT</span><h2>Three algorithms. One graph.</h2><p>Understand how each algorithm explores a network.</p></div></div>
+    <div class="algo-cards">
+      <article class="algo-card"><div class="algo-icon">↔</div><h3>Breadth-First Search</h3><p>Explores neighbors level by level using a queue. Useful for finding the fewest edges in an unweighted graph.</p><div class="complexity"><span>TIME COMPLEXITY</span><b>O(V + E)</b></div></article>
+      <article class="algo-card"><div class="algo-icon">↳</div><h3>Depth-First Search</h3><p>Follows one branch as far as possible before backtracking. Useful for connectivity and cycle exploration.</p><div class="complexity"><span>TIME COMPLEXITY</span><b>O(V + E)</b></div></article>
+      <article class="algo-card"><div class="algo-icon">⌁</div><h3>Dijkstra's Algorithm</h3><p>Finds the shortest weighted path from a start node with non-negative edge weights.</p><div class="complexity"><span>TIME COMPLEXITY</span><b>O((V + E) log V)*</b></div></article>
+    </div><p class="footnote">*Typical implementation with a priority queue. V = vertices, E = edges.</p>
+  </section>
+  <section class="about" id="about"><div><span class="kicker">03 / WHY GRAPHLAB</span><h2>Make the invisible<br><em>understandable.</em></h2></div><p>GraphLab is a learning companion for Algorithm Analysis and Design. Watch the queue change, follow visited nodes, and see how a path is discovered—one clear step at a time.</p></section>
+</main>
+<footer><a class="brand" href="#"><span class="brandmark">G</span> graph<span>lab</span></a><span>ADA Learning Project</span><a href="#visualizer">Back to visualizer ↑</a></footer>
+<script src="app.js"></script>
+</body></html>
